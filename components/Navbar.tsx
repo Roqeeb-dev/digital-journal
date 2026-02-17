@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Logo from "./Logo";
+import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
@@ -17,10 +18,10 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 max-w-6xl mx-auto py-10 flex items-center justify-between border-b border-gray-200">
+    <header className="px-3 md:px-2 sticky top-0 max-w-6xl mx-auto py-5 md:py-10 flex items-center justify-between border-b border-gray-200">
       <Logo />
 
-      <nav className="flex items-center gap-8">
+      <nav className="hidden md:flex items-center gap-8">
         {links.map((link, idx) => {
           const isActive = pathname === link.to;
           return (
@@ -36,6 +37,9 @@ export default function Navbar() {
           );
         })}
       </nav>
+
+      {/* Mobile menu */}
+      <Menu className="flex md:hidden" />
     </header>
   );
 }
