@@ -1,3 +1,5 @@
+import SectionHero from "@/components/SectionHero";
+
 export const metadata = {
   title: "Notes | Digital Journal",
   description:
@@ -7,7 +9,11 @@ export const metadata = {
 export default function Notes() {
   return (
     <main>
-      <div>Notes</div>
+      <SectionHero
+        pillText="Notes"
+        headingText="Short Reflections & Learnings"
+        paragraphText="Quick thoughts, small discoveries, and things I want to remember."
+      />
     </main>
   );
 }

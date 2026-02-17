@@ -1,3 +1,5 @@
+import SectionHero from "@/components/SectionHero";
+
 export const metadata = {
   title: "Studio | Digital Journal",
   description:
@@ -7,7 +9,11 @@ export const metadata = {
 export default function Studio() {
   return (
     <main>
-      <div>Studio section</div>
+      <SectionHero
+        pillText="Studio"
+        headingText="Personal workspace & Tools"
+        paragraphText="A look inside the creative environment. What I use, what inspires me, and what I'm currently tinkering with."
+      />
     </main>
   );
 }
