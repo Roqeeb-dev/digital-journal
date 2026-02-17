@@ -18,7 +18,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="px-3 md:px-2 sticky top-0 max-w-6xl mx-auto py-5 md:py-10 flex items-center justify-between border-b border-gray-200">
+    <header className="px-5 md:px-2 sticky top-0 max-w-6xl mx-auto py-4 md:py-10 flex items-center justify-between border-b border-gray-200">
       <Logo />
 
       <nav className="hidden md:flex items-center gap-8">
@@ -39,7 +39,7 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile menu */}
-      <Menu className="flex md:hidden" />
+      <Menu className="flex md:hidden" size={22} strokeWidth={1.5} />
     </header>
   );
 }

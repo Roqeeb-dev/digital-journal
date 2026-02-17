@@ -13,7 +13,7 @@ export default function Footer() {
     <footer className="max-w-6xl mx-auto py-10 flex items-center justify-between border-t border-gray-200">
       <section>
         <Logo />
-        <p className="text-secondaryText">
+        <p className="text-secondary-text">
           Digital Journal and creative studio
         </p>
       </section>
