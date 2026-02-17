@@ -1,4 +1,6 @@
 import SectionHero from "@/components/SectionHero";
+import { buildData } from "@/lib/buildData";
+import BuildCard from "@/components/BuildCard";
 
 export const metadata = {
   title: "Builds | Digital Journal",
@@ -7,12 +9,25 @@ export const metadata = {
 
 export default function Builds() {
   return (
-    <main>
+    <main className="max-w-6xl mx-auto">
       <SectionHero
         pillText="Builds"
         headingText="Experiments & Mini Projects"
         paragraphText="Things I'm building, breaking, and learning from."
       />
+
+      <section className="grid grid-cols-2 gap-4">
+        {buildData.map((b, idx) => (
+          <BuildCard
+            key={idx}
+            date={b.date}
+            title={b.title}
+            description={b.description}
+            technologies={b.technologies}
+            status={b.status}
+          />
+        ))}
+      </section>
     </main>
   );
 }
