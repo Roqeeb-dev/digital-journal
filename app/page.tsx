@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import CurrentlyExploring from "@/components/CurrentlyExploring";
 
 export const metadata = {
   title: "Home | Digital Journal",
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <CurrentlyExploring />
     </main>
   );
 }
