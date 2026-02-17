@@ -13,7 +13,9 @@ export default function Footer() {
     <footer className="max-w-6xl mx-auto py-10 flex items-center justify-between border-t border-gray-200">
       <section>
         <Logo />
-        <p>Digital Journal and Creative studio</p>
+        <p className="text-secondaryText">
+          Digital Journal and creative studio
+        </p>
       </section>
 
       {/* right */}

@@ -1,3 +1,5 @@
+import Hero from "@/components/Hero";
+
 export const metadata = {
   title: "Home | Digital Journal",
   description:
@@ -9,7 +11,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
-      <h1>Hello world</h1>
+      <Hero />
     </main>
   );
 }
