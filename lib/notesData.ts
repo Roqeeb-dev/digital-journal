@@ -39,7 +39,7 @@ export const notesData: Content[] = [
     excerpt:
       "A practical guide to building forms with full type safety using React Hook Form, Zod, and TypeScript—the pattern I use in every project.",
     createdAt: "2024-01-28T09:20:00Z",
-    category: "deep-dive",
+    category: "note",
     tags: ["typescript", "forms", "zod", "react-hook-form", "patterns"],
   },
   {
@@ -50,7 +50,7 @@ export const notesData: Content[] = [
     excerpt:
       "Reflections on the third rebuild of this site, why I kept it minimal, and what I learned about presenting work online.",
     createdAt: "2024-01-15T14:00:00Z",
-    category: "archive",
+    category: "note",
     tags: ["meta", "design", "portfolio", "reflection", "minimalism"],
   },
 ];
