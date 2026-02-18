@@ -7,7 +7,7 @@ const playfair = Playfair_Display({ subsets: ["latin"], weight: "500" });
 
 export default function Hero() {
   return (
-    <main className="px-5 md:px-3 py-10 md:py-12">
+    <main className="py-10 md:py-12">
       <PillText text="Digital Journal & Creative studio" />
       <h1
         className={`${playfair.className} text-4xl md:text-6xl my-6 md:my-10 font-bold`}

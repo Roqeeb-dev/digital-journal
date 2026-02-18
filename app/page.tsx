@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="max-w-6xl mx-auto">
+    <main className="max-w-6xl mx-auto px-5 md:px-2">
       <Hero />
       <CurrentlyExploring />
       <ThoughtStream />
