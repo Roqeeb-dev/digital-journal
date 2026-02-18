@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function Archive() {
   return (
-    <main>
+    <main className="px-5 md:px-2 max-w-6xl mx-auto">
       <SectionHero
         pillText="Archive"
         headingText="Timeline & memory trail"

@@ -12,7 +12,7 @@ export default function Notes() {
   const notesData = data.filter((d) => d.category === "note");
 
   return (
-    <main className="max-w-6xl mx-auto">
+    <main className="px-5 md:px-2 max-w-6xl mx-auto">
       <SectionHero
         pillText="Notes"
         headingText="Short Reflections & Learnings"

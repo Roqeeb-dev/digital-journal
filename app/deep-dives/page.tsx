@@ -10,7 +10,7 @@ const deepDiveData = data.filter((d) => d.category === "deep-dive");
 
 export default function DeepDives() {
   return (
-    <main className="max-w-6xl mx-auto">
+    <main className="px-5 md:px-2 max-w-6xl mx-auto">
       <SectionHero
         pillText="Deep Dives"
         headingText="Long form explorations"

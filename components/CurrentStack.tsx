@@ -3,14 +3,14 @@ import PillText from "./PillText";
 
 export default function CurrentStack() {
   return (
-    <section className="my-15">
+    <section className="my-14">
       <PillText text="Current Stack" />
 
-      <div className="flex items-center space-x-4 my-6">
+      <div className="flex flex-wrap gap-3 my-6">
         {currentStackData.map((c, idx) => (
           <p
             key={idx}
-            className="text-sm border border-gray-300 py-2 px-1 w-[200px] text-center text-secondary-text bg-gray-200 font-medium rounded-sm"
+            className="border border-secondary-text/15 py-2 px-3 text-center font-medium text-sm sm:text-md rounded-md text-secondary-text bg-[#f3f1ed]"
           >
             {c}
           </p>

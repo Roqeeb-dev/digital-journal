@@ -2,6 +2,7 @@ import SectionHero from "@/components/SectionHero";
 import Tools from "@/components/Tools";
 import CurrentStack from "@/components/CurrentStack";
 import Inspirations from "@/components/Inspirations";
+import CurrentExperiment from "@/components/CurrentExperiment";
 
 export const metadata = {
   title: "Studio | Digital Journal",
@@ -11,7 +12,7 @@ export const metadata = {
 
 export default function Studio() {
   return (
-    <main className="max-w-6xl mx-auto">
+    <main className="max-w-6xl mx-auto px-5 md:px-2">
       <SectionHero
         pillText="Studio"
         headingText="Personal workspace & Tools"
@@ -20,6 +21,7 @@ export default function Studio() {
       <Tools />
       <CurrentStack />
       <Inspirations />
+      <CurrentExperiment />
     </main>
   );
 }

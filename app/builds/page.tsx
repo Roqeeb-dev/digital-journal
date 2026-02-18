@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function Builds() {
   return (
-    <main className="max-w-6xl mx-auto">
+    <main className="px-5 md:px-2 max-w-6xl mx-auto">
       <SectionHero
         pillText="Builds"
         headingText="Experiments & Mini Projects"

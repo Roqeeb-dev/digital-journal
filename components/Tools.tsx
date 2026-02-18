@@ -10,7 +10,7 @@ export default function Tools() {
     <section className="my-5">
       <PillText text="Tools i reach for" />
 
-      <div className="grid grid-cols-2 gap-6 my-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-5">
         {toolsData.map(({ tool, subtitle }, idx) => (
           <div
             key={idx}
