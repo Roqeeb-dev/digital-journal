@@ -42,7 +42,7 @@ export default function ThoughtStream() {
         {builds.map((b, idx) => (
           <JournalCard
             key={idx}
-            category="EXPERIMENT"
+            category="build"
             date={b.date}
             title={b.title}
             description={b.description}
