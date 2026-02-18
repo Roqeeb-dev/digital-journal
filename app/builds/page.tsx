@@ -16,7 +16,7 @@ export default function Builds() {
         paragraphText="Things I'm building, breaking, and learning from."
       />
 
-      <section className="grid grid-cols-2 gap-4">
+      <section className="grid grid-cols-2 gap-6">
         {buildData.map((b, idx) => (
           <BuildCard
             key={idx}
