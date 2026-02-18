@@ -2,11 +2,18 @@
 
 import Link from "next/link";
 import Logo from "./Logo";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import MobileDropdown from "./MobileDropdown";
+
+export interface LinkProp {
+  text: string;
+  to: string;
+}
 
 export default function Navbar() {
-  const links = [
+  const links: LinkProp[] = [
     { text: "Journal", to: "/" },
     { text: "Notes", to: "/notes" },
     { text: "Builds", to: "/builds" },
@@ -14,11 +21,15 @@ export default function Navbar() {
     { text: "Archive", to: "/archive" },
     { text: "Studio", to: "/studio" },
   ];
-
+  const [isDropdownShown, setIsDropdownShown] = useState(false);
   const pathname = usePathname();
 
+  function toggleDropdown() {
+    setIsDropdownShown(!isDropdownShown);
+  }
+
   return (
-    <header className="px-5 md:px-2 backdrop-blur sticky top-0 max-w-6xl mx-auto py-4 md:py-8 flex items-center justify-between border-b border-gray-200">
+    <header className="relative px-5 md:px-2 backdrop-blur sticky top-0 max-w-6xl mx-auto py-4 md:py-8 flex items-center justify-between border-b border-gray-200">
       <Logo />
 
       <nav className="hidden md:flex items-center gap-8">
@@ -39,7 +50,23 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile menu */}
-      <Menu className="flex md:hidden" size={22} strokeWidth={1.5} />
+      {!isDropdownShown ? (
+        <Menu
+          className="flex md:hidden p-1 rounded-full hover:bg-gray-200"
+          size={28}
+          strokeWidth={1.5}
+          onClick={toggleDropdown}
+        />
+      ) : (
+        <X
+          className="flex md:hidden p-1 rounded-full hover:bg-gray-200"
+          size={28}
+          strokeWidth={1.5}
+          onClick={toggleDropdown}
+        />
+      )}
+
+      <MobileDropdown links={links} isOpen={isDropdownShown} />
     </header>
   );
 }

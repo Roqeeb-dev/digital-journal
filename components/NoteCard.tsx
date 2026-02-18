@@ -25,7 +25,7 @@ export default function NoteCard({
       </div>
 
       <h3
-        className={`${playfair.className} text-xl md:text-2xl mb-3 md:mb-4 text-primary-text group-hover:text-yellow-600 transition-colors leading-snug`}
+        className={`${playfair.className} text-xl md:text-2xl lg:text-3xl mb-3 md:mb-4 text-primary-text group-hover:text-yellow-600 transition-colors leading-snug`}
       >
         {title}
       </h3>
