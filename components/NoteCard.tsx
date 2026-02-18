@@ -6,6 +6,7 @@ interface CardProps {
 }
 
 import { Playfair_Display } from "next/font/google";
+import { getReadingTime } from "@/utils/getReadingTime";
 const playfair = Playfair_Display({ subsets: ["latin"], weight: "600" });
 
 export default function NoteCard({

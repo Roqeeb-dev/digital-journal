@@ -1,5 +1,6 @@
 import SectionHero from "@/components/SectionHero";
 import NoteCard from "@/components/NoteCard";
+import { getReadingTime } from "@/utils/getReadingTime";
 import { data } from "@/lib/data";
 
 export const metadata = {
@@ -26,7 +27,7 @@ export default function Notes() {
             date={note.createdAt}
             title={note.title}
             excerpt={note.excerpt}
-            readingTime="2m"
+            readingTime={`${getReadingTime(note.content)}m read`}
           />
         ))}
       </section>
