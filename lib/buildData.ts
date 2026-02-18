@@ -2,35 +2,42 @@ import type { BuildCardProps } from "@/components/BuildCard";
 
 export const buildData: BuildCardProps[] = [
   {
-    title: "Project 1",
+    title: "Unisphere – Resource Sharing Platform",
     description:
-      "Description of the project is very important and it helps us to understand exactly what the project does, its technologies and all other things sha ",
-    date: "Feb 2026",
-    status: "Ongoing",
-    technologies: ["React", "JavaScript"],
-  },
-  {
-    title: "Project 1",
-    description:
-      "Description of the project is very important and it helps us to understand exactly what the project does, its technologies and all other things sha ",
+      "A full-stack collaborative platform that allows users to share, manage, and discover academic and professional resources, featuring real-time updates, secure authentication, and role-based access control.",
     date: "Feb 2026",
     status: "Complete",
-    technologies: ["React", "JavaScript"],
+    technologies: [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
   },
   {
-    title: "Project 1",
+    title: "Khurizah Innovation – Corporate Website",
     description:
-      "Description of the project is very important and it helps us to understand exactly what the project does, its technologies and all other things sha ",
+      "A modern and responsive corporate website built to showcase Khurizah Innovation’s mission, services, and team, featuring smooth animations, clean layouts, and optimized performance.",
     date: "Feb 2026",
     status: "Complete",
-    technologies: ["React", "JavaScript"],
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
   },
   {
-    title: "Project 1",
+    title: "Productivity Dashboard – Notes & Task Manager",
     description:
-      "Description of the project is very important and it helps us to understand exactly what the project does, its technologies and all other things sha ",
+      "A productivity-focused dashboard for managing daily tasks and notes, featuring a clean UI, seamless interactions, and persistent data storage using browser local storage.",
     date: "Feb 2026",
     status: "Ongoing",
-    technologies: ["React", "JavaScript"],
+    technologies: ["HTML", "Tailwind CSS", "TypeScript", "Local Storage"],
+  },
+  {
+    title: "Personal Portfolio – Developer Showcase",
+    description:
+      "A high-performance personal portfolio website built with Next.js, featuring smooth animations, responsive layouts, modern UI/UX design, and SEO optimization.",
+    date: "Feb 2026",
+    status: "Complete",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
   },
 ];
