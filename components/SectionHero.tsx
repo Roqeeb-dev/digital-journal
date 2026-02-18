@@ -13,7 +13,7 @@ export default function SectionHero({
   paragraphText,
 }: HeroProps) {
   return (
-    <section className="max-w-6xl mx-auto my-20">
+    <section className="max-w-6xl mx-auto my-20 px-3 md:px-1">
       <PillText text={pillText} />
       <SectionHeading text={headingText} />
       <p className="text-lg md:text-xl/7 max-w-2xl text-secondary-text leading-relaxed">

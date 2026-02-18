@@ -6,7 +6,7 @@ interface CardProps {
 }
 
 import { Playfair_Display } from "next/font/google";
-const playfair = Playfair_Display({ subsets: ["latin"], weight: "500" });
+const playfair = Playfair_Display({ subsets: ["latin"], weight: "600" });
 
 export default function NoteCard({
   date,
@@ -25,7 +25,7 @@ export default function NoteCard({
       </div>
 
       <h3
-        className={`${playfair.className} text-xl md:text-2xl mb-3 md:mb-4 text-primary-text group-hover:text-highlight transition-colors leading-snug`}
+        className={`${playfair.className} text-xl md:text-2xl mb-3 md:mb-4 text-primary-text group-hover:text-yellow-600 transition-colors leading-snug`}
       >
         {title}
       </h3>

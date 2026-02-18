@@ -24,7 +24,7 @@ export default function BuildCard({
   status,
 }: BuildCardProps) {
   return (
-    <section className="p-6 rounded-md border border-gray-200 hover:shadow-sm transition-shadow duration-300 my-7">
+    <section className="p-6 rounded-md border border-gray-200 bg-[#f4f3ef] hover:shadow-sm transition-shadow duration-300">
       <div className="flex items-center justify-between">
         <p className="text-xs font-medium tracking-wide text-muted-text uppercase">
           {date}
@@ -45,7 +45,7 @@ export default function BuildCard({
         {title}
       </p>
 
-      <p className="text-secondary-text text-sm leading-relaxed my-5">
+      <p className="text-muted-text text-sm font-medium leading-relaxed my-5">
         {description}
       </p>
 
