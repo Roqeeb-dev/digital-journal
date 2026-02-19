@@ -14,7 +14,7 @@ export default function ThoughtStream() {
         <PillText text="Thought Stream" />
       </div>
 
-      <section className="grid grid-cols-1 grid-cols-2 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {notes.map((j, idx) => (
           <JournalCard
             key={idx}
@@ -38,7 +38,7 @@ export default function ThoughtStream() {
         ))}
       </section>
 
-      <section className="grid grid-cols-1 grid-cols-2 gap-6">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {builds.map((b, idx) => (
           <JournalCard
             key={idx}

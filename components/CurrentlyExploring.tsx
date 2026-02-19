@@ -8,7 +8,7 @@ export default function CurrentlyExploring() {
 
       <SectionHeading text="Advanced Next.js Architecture & SEO" />
 
-      <p className="text-xl/8 text-secondary-text max-w-xl">
+      <p className="text-md md:text-xl/8 text-secondary-text max-w-xl">
         Deep diving into metadata systems, dynamic rendering strategies, and the
         art of making fast things feel even faster.
       </p>
