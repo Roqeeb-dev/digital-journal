@@ -18,7 +18,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <main className="w-64 border-r border-gray-200 px-4">
+    <main className="w-64 border-r border-gray-200 p-4">
       <section className="mb-6">
         <Logo />
         <p className="text-sm/5 text-secondary-text">Creative Studio</p>
