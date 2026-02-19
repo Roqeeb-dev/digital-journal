@@ -20,6 +20,7 @@ export default function Navbar() {
     { text: "Deep Dives", to: "/deep-dives" },
     { text: "Archive", to: "/archive" },
     { text: "Studio", to: "/studio" },
+    { text: "Login", to: "/login" },
   ];
   const [isDropdownShown, setIsDropdownShown] = useState(false);
   const pathname = usePathname();
