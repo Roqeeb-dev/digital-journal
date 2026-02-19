@@ -20,6 +20,7 @@ export default function DeepDives() {
       <section className="flex flex-col gap-5">
         {deepDiveData.map((deepdive) => (
           <NoteCard
+            id={deepdive.id}
             key={deepdive.id}
             date={deepdive.createdAt}
             title={deepdive.title}

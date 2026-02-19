@@ -13,7 +13,7 @@ export default function Notes() {
   const notesData = data.filter((d) => d.category === "note");
 
   return (
-    <main className="px-5 md:px-2 max-w-6xl mx-auto">
+    <main className="px-5 lg:px-2 max-w-6xl mx-auto">
       <SectionHero
         pillText="Notes"
         headingText="Short Reflections & Learnings"
@@ -23,6 +23,7 @@ export default function Notes() {
       <section className="flex flex-col gap-5">
         {notesData.map((note) => (
           <NoteCard
+            id={note.id}
             key={note.id}
             date={note.createdAt}
             title={note.title}
