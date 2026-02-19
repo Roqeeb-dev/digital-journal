@@ -67,7 +67,11 @@ export default function Navbar() {
         />
       )}
 
-      <MobileDropdown links={links} isOpen={isDropdownShown} />
+      <MobileDropdown
+        links={links}
+        isOpen={isDropdownShown}
+        onclose={() => setIsDropdownShown(false)}
+      />
     </header>
   );
 }

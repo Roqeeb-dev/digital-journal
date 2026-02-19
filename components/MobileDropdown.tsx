@@ -4,9 +4,14 @@ import Link from "next/link";
 interface DropdownProps {
   links: LinkProp[];
   isOpen: boolean;
+  onclose: () => void;
 }
 
-export default function MobileDropdown({ links, isOpen }: DropdownProps) {
+export default function MobileDropdown({
+  links,
+  isOpen,
+  onclose,
+}: DropdownProps) {
   if (!isOpen) return null;
 
   return (
@@ -31,6 +36,7 @@ export default function MobileDropdown({ links, isOpen }: DropdownProps) {
             <Link
               key={idx}
               href={link.to}
+              onClick={onclose}
               className="text-xl font-medium text-yellow-700 tracking-tight hover:bg-accent transition-colors"
             >
               {link.text}
