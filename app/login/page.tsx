@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Dialog from "@/components/Dialog";
 
 export default function Login() {
   const [password, setPassword] = useState("");
@@ -13,7 +14,7 @@ export default function Login() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (isAuthor) {
-      router.push("/dashboard");
+      router.replace("/dashboard");
     } else {
       setIsShown(true);
     }
@@ -72,14 +73,20 @@ export default function Login() {
           >
             Enter
           </button>
-
-          {isShown && <p>You are not authorized to access the dashboard</p>}
         </form>
 
         <p className="mt-4 text-sm text-muted-text text-center leading-relaxed">
           This is a private space — for the author only.{" "}
           <span className="italic">Not all paths are meant to be shared.</span>
         </p>
+
+        <Dialog
+          isOpen={isShown}
+          onClose={() => setIsShown(false)}
+          variant="error"
+          title="Unauthorized Attempt"
+          description="This action is reserved for the author alone"
+        />
       </section>
     </main>
   );
