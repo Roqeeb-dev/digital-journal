@@ -30,7 +30,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="relative px-5 md:px-2 backdrop-blur sticky top-0 max-w-6xl mx-auto py-4 md:py-8 flex items-center justify-between border-b border-gray-200">
+    <header className="relative px-6 backdrop-blur sticky top-0 py-4 md:py-8 flex items-center justify-between border-b border-gray-200">
       <Logo />
 
       <nav className="hidden md:flex items-center gap-8">

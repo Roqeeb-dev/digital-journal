@@ -18,13 +18,13 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <main className="w-64 border-r border-gray-200 p-4">
-      <section className="mb-6">
+    <main className="w-64 border-r border-gray-200 p-6">
+      <section className="mb-6 border-b border-gray-300 py-4">
         <Logo />
         <p className="text-sm/5 text-secondary-text">Creative Studio</p>
       </section>
 
-      <section className="flex flex-col justify-center gap-2">
+      <section className="flex flex-col justify-center gap-1">
         {sideLinks.map(({ text, to }, idx) => {
           const isActive = pathname === to;
 
