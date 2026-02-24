@@ -51,8 +51,8 @@ export const inspirationsData = [
     fact: "His deep understanding of React and ability to simplify complex concepts motivates me to write better and cleaner code.",
   },
   {
-    people: "Lee Robinson",
-    fact: "His work at Vercel and educational content around Next.js push me to explore modern web performance and architecture.",
+    people: "Olaniyan Haleemah",
+    fact: "Her selfless attitude and simple outlook to life reassures me that there are still good people on earth.",
   },
   {
     people: "Theo Browne",
