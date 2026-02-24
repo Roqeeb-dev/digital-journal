@@ -3,6 +3,7 @@
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import type { Content } from "@/lib/notesData";
+import { useJournalStore } from "@/store/useJournalStore";
 import BackLink from "@/components/BackLink";
 
 export default function FormClient() {
@@ -15,6 +16,8 @@ export default function FormClient() {
     category: "note",
     tags: ["text"],
   });
+
+  const addNewJournal = useJournalStore((state) => state.addNewJournal);
 
   function handleChange(
     e: React.ChangeEvent<
@@ -30,20 +33,57 @@ export default function FormClient() {
     }));
   }
 
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if (
+      !journalDetails.title.trim() ||
+      !journalDetails.category ||
+      !journalDetails.content ||
+      !journalDetails.excerpt
+    ) {
+      alert("The form is not complete yet");
+      return;
+    }
+
+    addNewJournal({
+      ...journalDetails,
+      id: Date.now(),
+      createdAt: new Date().toISOString(),
+    });
+
+    setJournalDetails({
+      id: Date.now(),
+      title: "",
+      content: "",
+      excerpt: "",
+      createdAt: "",
+      category: "note",
+      tags: ["text"],
+    });
+  }
   return (
     <main className="min-h-screen max-w-6xl mx-auto bg-stone-100 px-4 lg:px-0 pt-8 pb-24">
       {/* Top Bar */}
       <div className="flex items-center justify-between mb-12">
         <BackLink />
         <div className="flex items-center gap-2">
-          <button className="px-4 py-1.5 text-sm rounded bg-orange-700 text-white hover:bg-orange-800 transition">
+          <button
+            form="journal-form"
+            type="submit"
+            className="px-4 py-1.5 text-sm rounded bg-orange-700 text-white hover:bg-orange-800 transition"
+          >
             Publish
           </button>
         </div>
       </div>
 
       {/* Main Workspace */}
-      <section className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-16">
+      <form
+        id="journal-form"
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-16"
+      >
         {/* Writing Area */}
         <div>
           <input
@@ -52,6 +92,7 @@ export default function FormClient() {
             placeholder="Title"
             value={journalDetails.title}
             onChange={handleChange}
+            required
             className="w-full bg-transparent text-5xl font-serif text-stone-700 placeholder:text-stone-300 focus:outline-none leading-tight"
           />
           <input
@@ -60,6 +101,7 @@ export default function FormClient() {
             placeholder="Subtitle or short description..."
             value={journalDetails.excerpt}
             onChange={handleChange}
+            required
             className="w-full bg-transparent mt-4 text-base text-stone-400 placeholder:text-stone-300 focus:outline-none"
           />
           <div className="border-b border-stone-300 mt-6 mb-8" />
@@ -68,6 +110,7 @@ export default function FormClient() {
             name="content"
             value={journalDetails.content}
             onChange={handleChange}
+            required
             className="w-full min-h-[60vh] bg-transparent resize-none text-base leading-relaxed text-stone-600 placeholder:text-stone-300 focus:outline-none"
           />
         </div>
@@ -84,6 +127,7 @@ export default function FormClient() {
                 name="category"
                 value={journalDetails.category}
                 onChange={handleChange}
+                required
                 className="w-full px-3 py-2 text-sm text-stone-600 border border-stone-300 rounded bg-stone-100 focus:outline-none focus:border-stone-400 appearance-none cursor-pointer pr-8"
               >
                 <option value="note">Notes</option>
@@ -108,7 +152,7 @@ export default function FormClient() {
             />
           </Field>
         </aside>
-      </section>
+      </form>
     </main>
   );
 }
