@@ -3,7 +3,7 @@
 import BackLink from "@/components/BackLink";
 import SectionHeading from "@/components/SectionHeading";
 import Link from "next/link";
-import { data } from "@/lib/data";
+import { useJournalStore } from "@/store/useJournalStore";
 import { getReadingTime } from "@/utils/getReadingTime";
 
 type Props = {
@@ -11,7 +11,8 @@ type Props = {
 };
 
 export default function JournalClient({ id }: Props) {
-  const selectedJournal = data.find((d) => d.id === Number(id));
+  const journals = useJournalStore((state) => state.journals);
+  const selectedJournal = journals.find((d) => d.id === Number(id));
 
   if (!selectedJournal) {
     return (

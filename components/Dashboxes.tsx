@@ -1,15 +1,24 @@
 "use client";
 
 import { Playfair_Display } from "next/font/google";
+import { useJournalStore } from "@/store/useJournalStore";
+import { buildData } from "@/lib/buildData";
 
-const details = [
-  { count: 24, text: "Notes" },
-  { count: 23, text: "Builds" },
-  { count: 51, text: "Deepdives" },
-];
 const playfair = Playfair_Display({ subsets: ["latin"], weight: "500" });
 
 export default function Dashboxes() {
+  const journals = useJournalStore((state) => state.journals);
+  const noteCount = journals.filter((j) => j.category === "note").length;
+  const deepDiveCount = journals.filter(
+    (j) => j.category === "deep-dive",
+  ).length;
+  const buildCount = buildData.length;
+
+  const details = [
+    { count: noteCount, text: "Notes" },
+    { count: buildCount, text: "Builds" },
+    { count: deepDiveCount, text: "Deepdives" },
+  ];
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {details.map((d, idx) => (

@@ -1,11 +1,16 @@
+"use client";
+
 import PillText from "./PillText";
-import { data } from "@/lib/data";
+import { useJournalStore } from "@/store/useJournalStore";
 import { buildData } from "@/lib/buildData";
 import JournalCard from "./JournalCard";
 
 export default function ThoughtStream() {
-  const notes = data.filter((d) => d.category === "note").slice(0, 2);
-  const deepDive = data.filter((d) => d.category === "deep-dive").slice(0, 1);
+  const journals = useJournalStore((state) => state.journals);
+  const notes = journals.filter((d) => d.category === "note").slice(0, 2);
+  const deepDive = journals
+    .filter((d) => d.category === "deep-dive")
+    .slice(0, 1);
   const builds = buildData.slice(0, 2);
 
   return (
