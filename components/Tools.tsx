@@ -14,7 +14,7 @@ export default function Tools() {
         {toolsData.map(({ tool, subtitle }, idx) => (
           <div
             key={idx}
-            className="flex items-center justify-between border-b border-gray-200 py-4"
+            className="flex items-center justify-between space-x-4 border-b border-gray-200 py-4"
           >
             <p className={`${playfair.className} text-xl`}>{tool}</p>
             <p className="text-secondary-text text-sm italic text-lg">

@@ -14,7 +14,7 @@ export default function Inspirations() {
         {inspirationsData.map((obj, idx) => (
           <div
             key={idx}
-            className="flex items-center justify-between border-b border-gray-200 py-6"
+            className="flex items-center justify-between space-x-4 border-b border-gray-200 py-6"
           >
             <p className={`${playfair.className} text-xl`}>{obj.people}</p>
             <p className="text-secondary-text text-sm">{obj.fact}</p>
