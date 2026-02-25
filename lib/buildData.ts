@@ -29,7 +29,7 @@ export const buildData: BuildCardProps[] = [
     description:
       "A productivity-focused dashboard for managing daily tasks and notes, featuring a clean UI, seamless interactions, and persistent data storage using browser local storage.",
     date: "Feb 2026",
-    status: "Ongoing",
+    status: "Complete",
     technologies: ["HTML", "Tailwind CSS", "TypeScript", "Local Storage"],
   },
   {
