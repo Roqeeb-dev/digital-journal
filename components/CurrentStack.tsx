@@ -6,11 +6,11 @@ export default function CurrentStack() {
     <section className="my-14">
       <PillText text="Current Stack" />
 
-      <div className="flex flex-wrap gap-3 my-6">
+      <div className="flex flex-wrap gap-2.5 mt-5 mb-6">
         {currentStackData.map((c, idx) => (
           <p
             key={idx}
-            className="border border-secondary-text/15 py-2 px-3 text-center font-medium text-sm sm:text-md rounded-md text-secondary-text bg-[#f3f1ed]"
+            className="border border-secondary-text/15 py-1.5 px-4 text-center font-medium text-xs sm:text-sm rounded-lg text-secondary-text bg-[#f3f1ed] tracking-wide"
           >
             {c}
           </p>

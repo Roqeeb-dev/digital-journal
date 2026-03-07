@@ -10,14 +10,18 @@ export default function Inspirations() {
     <section>
       <PillText text="People Who Inspire Me" />
 
-      <div className="my-5">
+      <div className="mt-5">
         {inspirationsData.map((obj, idx) => (
           <div
             key={idx}
-            className="flex items-center justify-between space-x-4 border-b border-gray-200 py-6"
+            className="flex items-start md:items-center justify-between gap-8 border-b border-gray-100 py-5"
           >
-            <p className={`${playfair.className} text-xl`}>{obj.people}</p>
-            <p className="text-secondary-text text-sm">{obj.fact}</p>
+            <p className={`${playfair.className} text-xl shrink-0`}>
+              {obj.people}
+            </p>
+            <p className="text-secondary-text text-sm leading-relaxed text-right">
+              {obj.fact}
+            </p>
           </div>
         ))}
       </div>

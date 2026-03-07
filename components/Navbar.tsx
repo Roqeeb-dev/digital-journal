@@ -30,19 +30,21 @@ export default function Navbar() {
   }
 
   return (
-    <header className="relative px-4 md:px-8 max-w-7xl mx-auto backdrop-blur sticky top-0 py-4 md:py-8 flex items-center justify-between border-b border-gray-200">
+    <header className="relative px-4 md:px-8 max-w-7xl mx-auto backdrop-blur-sm bg-white/80 sticky top-0 py-4 md:py-5 flex items-center justify-between border-b border-gray-100 z-50">
       <Logo />
 
-      <nav className="hidden md:flex items-center gap-8">
+      <nav className="hidden md:flex items-center gap-7">
         {links.map((link, idx) => {
           const isActive = pathname === link.to;
           return (
             <Link
               key={idx}
               href={link.to}
-              className={
-                isActive ? "text-black" : "text-[#5F5F5F] hover:text-black"
-              }
+              className={`text-sm transition-colors duration-200 ${
+                isActive
+                  ? "text-black font-medium"
+                  : "text-[#5F5F5F] hover:text-black"
+              }`}
             >
               {link.text}
             </Link>
@@ -53,14 +55,14 @@ export default function Navbar() {
       {/* Mobile menu */}
       {!isDropdownShown ? (
         <Menu
-          className="flex md:hidden p-1 rounded-full hover:bg-gray-200"
+          className="flex md:hidden p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
           size={28}
           strokeWidth={1.5}
           onClick={toggleDropdown}
         />
       ) : (
         <X
-          className="flex md:hidden p-1 rounded-full hover:bg-gray-200"
+          className="flex md:hidden p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
           size={28}
           strokeWidth={1.5}
           onClick={toggleDropdown}
