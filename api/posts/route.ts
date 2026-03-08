@@ -1,8 +1,8 @@
 import { supabase } from "@/lib/supabase";
 import { NextResponse } from "next/server";
-import { Journal } from "@/models/Journal";
+import { Post } from "@/models/Post";
 
-type NewJournalPayload = Omit<Journal, "id" | "created_at" | "updated_at">;
+type NewJournalPayload = Omit<Post, "id" | "created_at" | "updated_at">;
 
 export async function GET() {
   const { data: journals, error } = await supabase

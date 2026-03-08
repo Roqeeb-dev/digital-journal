@@ -1,5 +1,3 @@
-import { mockPosts } from "./mockPosts";
-
 export interface Post {
   _id: string;
   title: string;
@@ -15,5 +13,3 @@ export interface Post {
   createdAt: string;
   updatedAt: string;
 }
-
-export const data = mockPosts;

@@ -14,12 +14,11 @@ export interface LinkProp {
 
 export default function Navbar() {
   const links: LinkProp[] = [
-    { text: "Journal", to: "/" },
-    { text: "Notes", to: "/notes" },
-    { text: "Builds", to: "/builds" },
-    { text: "Deep Dives", to: "/deep-dives" },
-    { text: "Archive", to: "/archive" },
-    { text: "Studio", to: "/studio" },
+    { text: "Home", to: "/" },
+    { text: "Explore", to: "/notes" },
+    { text: "Tags", to: "/notes" },
+    { text: "Write", to: "/deep-dives" },
+    { text: "Dashboard", to: "/archive" },
     { text: "Login", to: "/login" },
   ];
   const [isDropdownShown, setIsDropdownShown] = useState(false);

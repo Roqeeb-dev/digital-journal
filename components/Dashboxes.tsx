@@ -2,7 +2,6 @@
 
 import { Playfair_Display } from "next/font/google";
 import { useJournalStore } from "@/store/useJournalStore";
-import { buildData } from "@/lib/buildData";
 
 const playfair = Playfair_Display({ subsets: ["latin"], weight: "500" });
 
@@ -12,11 +11,9 @@ export default function Dashboxes() {
   const deepDiveCount = journals.filter(
     (j) => j.category === "deep-dive",
   ).length;
-  const buildCount = buildData.length;
 
   const details = [
     { count: noteCount, text: "Notes" },
-    { count: buildCount, text: "Builds" },
     { count: deepDiveCount, text: "Deepdives" },
   ];
 

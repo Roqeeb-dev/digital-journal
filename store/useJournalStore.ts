@@ -1,20 +1,20 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { data } from "@/lib/data";
-import type { Content } from "@/lib/notesData";
+import type { Post } from "@/lib/data";
 
 interface Props {
-  journals: Content[];
-  addNewJournal: (data: Content) => void;
+  posts: Post[];
+  addNewPost: (data: Post) => void;
 }
 
 export const useJournalStore = create<Props>()(
   persist(
     (set) => ({
-      journals: data,
-      addNewJournal: (newJournal) =>
+      posts: data,
+      addNewPost: (newPost) =>
         set((state) => ({
-          journals: [newJournal, ...state.journals],
+          posts: [newPost, ...state.posts],
         })),
     }),
     {
