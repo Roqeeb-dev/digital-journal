@@ -12,9 +12,13 @@ export const metadata = {
 };
 
 export default function Home() {
-  const notes = data.filter((post) => post.category === "note");
-  const deepDives = data.filter((post) => post.category === "deep-dive");
-  const articles = data.filter((post) => post.category === "article");
+  const notes = data.filter((post) => post.category === "note").slice(0, 1);
+  const deepDives = data
+    .filter((post) => post.category === "deep-dive")
+    .slice(0, 1);
+  const articles = data
+    .filter((post) => post.category === "article")
+    .slice(0, 1);
 
   return (
     <main className="max-w-6xl mx-auto px-5 md:px-3">

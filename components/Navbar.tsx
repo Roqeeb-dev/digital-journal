@@ -5,6 +5,7 @@ import Logo from "./Logo";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useAuthStore } from "@/store/useAuthStore";
 import MobileDropdown from "./MobileDropdown";
 
 export interface LinkProp {
@@ -13,20 +14,33 @@ export interface LinkProp {
 }
 
 export default function Navbar() {
-  const links: LinkProp[] = [
-    { text: "Home", to: "/" },
-    { text: "Explore", to: "/notes" },
-    { text: "Tags", to: "/notes" },
-    { text: "Write", to: "/deep-dives" },
-    { text: "Dashboard", to: "/archive" },
-    { text: "Login", to: "/login" },
-  ];
   const [isDropdownShown, setIsDropdownShown] = useState(false);
+  const user = useAuthStore((state) => state.user);
   const pathname = usePathname();
 
   function toggleDropdown() {
     setIsDropdownShown(!isDropdownShown);
   }
+
+  const publicLinks: LinkProp[] = [
+    { text: "Home", to: "/" },
+    { text: "Explore", to: "/explore" },
+    { text: "Tags", to: "/tags" },
+  ];
+
+  const authLinks: LinkProp[] = [
+    { text: "Write", to: "/write" },
+    { text: "Dashboard", to: "/dashboard" },
+  ];
+
+  const guestLinks: LinkProp[] = [
+    { text: "Login", to: "/login" },
+    { text: "Register", to: "/register" },
+  ];
+
+  const links: LinkProp[] = user
+    ? [...publicLinks, ...authLinks]
+    : [...publicLinks, ...guestLinks];
 
   return (
     <header className="relative px-4 md:px-8 max-w-7xl mx-auto backdrop-blur-sm bg-white/80 sticky top-0 py-4 md:py-5 flex items-center justify-between border-b border-gray-100 z-50">
@@ -51,7 +65,6 @@ export default function Navbar() {
         })}
       </nav>
 
-      {/* Mobile menu */}
       {!isDropdownShown ? (
         <Menu
           className="flex md:hidden p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
