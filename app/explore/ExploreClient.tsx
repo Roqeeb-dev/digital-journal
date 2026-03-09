@@ -33,25 +33,25 @@ const mockPosts = [
 
 export default function ExploreClient() {
   return (
-    <main className="min-h-screen bg-[#f5f0e8] px-6 py-12">
-      <section className="max-w-3xl mx-auto">
+    <main className="min-h-screen bg-[#f5f0e8] px-8 py-14">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <header className="mb-12">
+        <header className="mb-14">
           <p className="text-xs tracking-[0.2em] uppercase text-stone-400 mb-3">
             Discover
           </p>
 
-          <h1 className="text-4xl font-serif text-stone-800 leading-tight">
+          <h1 className="text-5xl font-serif text-stone-800 leading-tight">
             Explore
             <br />
-            <span className="text-stone-500 italic font-normal">
+            <span className="italic text-stone-500 font-normal">
               shared thoughts
             </span>
           </h1>
         </header>
 
         {/* Search */}
-        <div className="mb-10">
+        <div className="mb-12 max-w-xl">
           <input
             type="text"
             placeholder="Search journals..."
@@ -59,62 +59,73 @@ export default function ExploreClient() {
           />
         </div>
 
-        {/* Popular Tags */}
-        <div className="mb-12">
-          <p className="text-xs uppercase tracking-[0.2em] text-stone-400 mb-4">
-            Popular Tags
-          </p>
-
-          <div className="flex flex-wrap gap-2">
-            {["reflection", "life", "writing", "mindfulness", "coding"].map(
-              (tag) => (
-                <Link
-                  key={tag}
-                  href={`/tags/${tag}`}
-                  className="px-3 py-1 text-xs border border-stone-300 text-stone-600 hover:bg-stone-900 hover:text-[#f5f0e8] transition"
-                >
-                  #{tag}
+        {/* Layout */}
+        <div className="grid grid-cols-12 gap-16">
+          {/* Journal Feed */}
+          <section className="col-span-8 space-y-14">
+            {mockPosts.map((post) => (
+              <article key={post.id} className="group">
+                <Link href={`/journal/${post.id}`}>
+                  <h2 className="text-3xl font-serif text-stone-800 group-hover:text-amber-700 transition">
+                    {post.title}
+                  </h2>
                 </Link>
-              ),
-            )}
-          </div>
-        </div>
 
-        {/* Posts */}
-        <div className="space-y-10">
-          {mockPosts.map((post) => (
-            <article key={post.id} className="group">
-              <Link href={`/journal/${post.id}`}>
-                <h2 className="text-2xl font-serif text-stone-800 group-hover:text-amber-700 transition">
-                  {post.title}
-                </h2>
-              </Link>
+                <p className="text-stone-600 mt-4 leading-relaxed max-w-2xl">
+                  {post.excerpt}
+                </p>
 
-              <p className="text-stone-600 mt-3 leading-relaxed">
-                {post.excerpt}
+                <div className="flex items-center gap-3 text-xs text-stone-400 mt-4">
+                  <span>{post.author}</span>
+                  <span>•</span>
+                  <span>{post.date}</span>
+                </div>
+
+                <div className="flex gap-3 mt-4">
+                  {post.tags.map((tag) => (
+                    <Link
+                      key={tag}
+                      href={`/tags/${tag}`}
+                      className="text-xs text-amber-700 hover:underline"
+                    >
+                      #{tag}
+                    </Link>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </section>
+
+          {/* Sidebar */}
+          <aside className="col-span-4">
+            <div className="sticky top-24">
+              <p className="text-xs uppercase tracking-[0.2em] text-stone-400 mb-5">
+                Popular Tags
               </p>
 
-              <div className="flex items-center gap-3 text-xs text-stone-400 mt-4">
-                <span>{post.author}</span>
-                <span>•</span>
-                <span>{post.date}</span>
-              </div>
-
-              <div className="flex gap-2 mt-4">
-                {post.tags.map((tag) => (
+              <div className="flex flex-wrap gap-3">
+                {[
+                  "reflection",
+                  "life",
+                  "writing",
+                  "mindfulness",
+                  "coding",
+                  "growth",
+                  "thinking",
+                ].map((tag) => (
                   <Link
                     key={tag}
                     href={`/tags/${tag}`}
-                    className="text-xs text-amber-700 hover:underline"
+                    className="px-3 py-1 text-xs border border-stone-300 text-stone-600 hover:bg-stone-900 hover:text-[#f5f0e8] transition"
                   >
                     #{tag}
                   </Link>
                 ))}
               </div>
-            </article>
-          ))}
+            </div>
+          </aside>
         </div>
-      </section>
+      </div>
     </main>
   );
 }
