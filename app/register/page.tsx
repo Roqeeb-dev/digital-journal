@@ -1,7 +1,14 @@
+import RegisterClient from "./RegisterClient";
+
+export const metadata = {
+  title: "Register | Digital Journal",
+  description: "Register to view your personalized feed",
+};
+
 export default function Page() {
   return (
-    <div>
-      <h1>hello world</h1>
-    </div>
+    <main>
+      <RegisterClient />
+    </main>
   );
 }

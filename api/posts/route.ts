@@ -1,6 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import { NextResponse } from "next/server";
-import { Post } from "@/models/Post";
+import { Post } from "@/types/Post";
 
 type NewJournalPayload = Omit<Post, "id" | "created_at" | "updated_at">;
 
