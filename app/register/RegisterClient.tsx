@@ -1,19 +1,41 @@
 "use client";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "@/hooks/useForm";
+import { register } from "@/services/authService";
 
 export default function RegisterClient() {
-  const { values, update } = useForm({ username: "", password: "" });
+  const { values, update } = useForm({
+    email: "",
+    username: "",
+    password: "",
+  });
+
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    router.replace("/dashboard");
+
+    setError(null);
+    setLoading(true);
+
+    try {
+      await register(values.email, values.password, values.username);
+      router.replace("/dashboard");
+    } catch (err: any) {
+      setError(err.message || "Registration failed");
+    } finally {
+      setLoading(false);
+    }
   }
 
   const fields = [
+    { key: "email" as const, label: "Email", type: "email" },
     { key: "username" as const, label: "Username", type: "text" },
     { key: "password" as const, label: "Password", type: "password" },
   ];
@@ -46,6 +68,7 @@ export default function RegisterClient() {
               >
                 {label}
               </label>
+
               <input
                 type={type}
                 value={values[key]}
@@ -61,11 +84,14 @@ export default function RegisterClient() {
             </div>
           ))}
 
+          {error && <p className="text-sm text-red-500 text-center">{error}</p>}
+
           <button
             type="submit"
-            className="w-full mt-8 py-3.5 text-sm tracking-[0.15em] uppercase transition-colors duration-200 bg-stone-950 hover:bg-stone-800 text-[#f5f0e8] font-serif"
+            disabled={loading}
+            className="w-full mt-8 py-3.5 text-sm tracking-[0.15em] uppercase transition-colors duration-200 bg-stone-950 hover:bg-stone-800 text-[#f5f0e8] font-serif disabled:opacity-60"
           >
-            Register
+            {loading ? "Creating account..." : "Register"}
           </button>
         </form>
 

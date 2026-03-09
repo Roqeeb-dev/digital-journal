@@ -1,21 +1,14 @@
-import type { Post } from "@/lib/data";
+import type { User } from "@/types/User";
 import { create } from "zustand";
-
-export interface User {
-  name: string;
-  email: string;
-  posts: Post[];
-  bio?: string;
-}
 
 interface Props {
   user: User | null;
-  setUser: (data: User) => void;
+  setUser: (data: User | null) => void;
 }
 
 export const useAuthStore = create<Props>((set) => ({
   user: null,
-  setUser: (data: User) => {
+  setUser: (data) => {
     set({ user: data });
   },
 }));

@@ -32,7 +32,7 @@ export async function register(
 }
 
 export async function login(email: string, password: string) {
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const { data: authData, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
@@ -41,7 +41,32 @@ export async function login(email: string, password: string) {
     throw new Error(error.message);
   }
 
-  return data;
+  if (!authData.user) {
+    throw new Error("User not found");
+  }
+
+  const { data: profile, error: profileError } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("id", authData.user.id)
+    .single();
+
+  if (profileError) {
+    throw new Error(profileError.message);
+  }
+
+  return {
+    user: {
+      id: profile.id,
+      username: profile.username,
+      email: profile.email,
+      avatarUrl: profile.avatar_url ?? null,
+      bio: profile.bio ?? null,
+      createdAt: profile.created_at,
+      updatedAt: profile.updated_at ?? null,
+    } as User,
+    session: authData.session,
+  };
 }
 
 export async function logout() {
