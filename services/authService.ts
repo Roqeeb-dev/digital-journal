@@ -19,15 +19,14 @@ export async function register(
     throw new Error("User creation failed");
   }
 
-  const { error: profileError } = await supabase
+  const { data: profile } = await supabase
     .from("profiles")
-    .update({ username })
+    .select("*")
     .eq("id", data.user.id)
-    .select()
-    .single();
+    .maybeSingle();
 
-  if (profileError) {
-    throw new Error(profileError.message);
+  if (profile) {
+    await supabase.from("profiles").update({ username }).eq("id", data.user.id);
   }
 
   return data;

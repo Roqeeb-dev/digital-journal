@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useAuthStore } from "@/store/useAuthStore";
 import MobileDropdown from "./MobileDropdown";
+import { supabase } from "@/lib/supabase";
 
 export interface LinkProp {
   text: string;

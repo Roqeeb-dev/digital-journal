@@ -2,6 +2,9 @@ import Hero from "@/components/Hero";
 import NoteCard from "@/components/NoteCard";
 import JournalCard from "@/components/JournalCard";
 import { data } from "@/lib/data";
+import { supabase } from "@/lib/supabase";
+
+await supabase.auth.signOut();
 
 export const metadata = {
   title: "Home | Ink",
