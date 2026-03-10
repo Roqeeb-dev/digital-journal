@@ -4,17 +4,15 @@ import Link from "next/link";
 import PillText from "@/components/PillText";
 import SectionHeading from "@/components/SectionHeading";
 import { useJournalStore } from "@/store/useJournalStore";
-import { buildData } from "@/lib/buildData";
-import { FileText, Layers, BookOpen, Plus } from "lucide-react";
+import { FileText, BookOpen, Plus } from "lucide-react";
 
 export default function DashClient() {
-  const journals = useJournalStore((state) => state.journals);
+  const journals = useJournalStore((state) => state.posts);
 
   const noteCount = journals.filter((j) => j.category === "note").length;
   const deepDiveCount = journals.filter(
     (j) => j.category === "deep-dive",
   ).length;
-  const buildCount = buildData.length;
 
   const stats = [
     {
@@ -23,12 +21,7 @@ export default function DashClient() {
       desc: "Quick thoughts and observations",
       icon: FileText,
     },
-    {
-      label: "Builds",
-      value: buildCount,
-      desc: "Projects and experiments",
-      icon: Layers,
-    },
+
     {
       label: "Deep Dives",
       value: deepDiveCount,

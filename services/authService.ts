@@ -15,17 +15,19 @@ export async function register(
     throw new Error(error.message);
   }
 
-  if (data.user) {
-    const { error: profileError } = await supabase.from("profiles").insert({
-      id: data.user.id,
-      username,
-      email,
-      created_at: new Date().toISOString(),
-    });
+  if (!data.user) {
+    throw new Error("User creation failed");
+  }
 
-    if (profileError) {
-      throw new Error(profileError.message);
-    }
+  const { error: profileError } = await supabase
+    .from("profiles")
+    .update({ username })
+    .eq("id", data.user.id)
+    .select()
+    .single();
+
+  if (profileError) {
+    throw new Error(profileError.message);
   }
 
   return data;

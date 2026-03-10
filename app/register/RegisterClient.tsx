@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "@/hooks/useForm";
 import { register } from "@/services/authService";
+import { useAuthStore } from "@/store/useAuthStore";
 
 export default function RegisterClient() {
   const { values, update } = useForm({
@@ -11,6 +12,7 @@ export default function RegisterClient() {
     username: "",
     password: "",
   });
+  const setUser = useAuthStore((state) => state.setUser);
 
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -25,7 +27,19 @@ export default function RegisterClient() {
     setLoading(true);
 
     try {
-      await register(values.email, values.password, values.username);
+      const res = await register(
+        values.email,
+        values.password,
+        values.username,
+      );
+      if (res.session && res.user) {
+        setUser({
+          id: res.user.id,
+          email: res.user.email!,
+          username: values.username,
+          createdAt: new Date().toISOString(),
+        });
+      }
       router.replace("/dashboard");
     } catch (err: any) {
       setError(err.message || "Registration failed");
