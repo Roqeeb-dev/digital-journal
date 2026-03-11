@@ -1,19 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "@/hooks/useForm";
 import { register } from "@/services/authService";
-import { useAuthStore } from "@/store/useAuthStore";
+import { syncUserToStore } from "@/lib/syncUser";
 
 export default function RegisterClient() {
-  const { values, update } = useForm({
-    email: "",
-    username: "",
-    password: "",
-  });
-  const setUser = useAuthStore((state) => state.setUser);
-
+  const { values, update } = useForm({ email: "", username: "", password: "" });
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -22,24 +16,14 @@ export default function RegisterClient() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
     setError(null);
     setLoading(true);
 
     try {
-      const res = await register(
-        values.email,
-        values.password,
-        values.username,
-      );
-      if (res.session && res.user) {
-        setUser({
-          id: res.user.id,
-          email: res.user.email!,
-          username: values.username,
-          createdAt: new Date().toISOString(),
-        });
-      }
+      await register(values.email, values.password, values.username);
+
+      await syncUserToStore();
+
       router.replace("/dashboard");
     } catch (err: any) {
       setError(err.message || "Registration failed");

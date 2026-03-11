@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Logo from "./Logo";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useAuthStore } from "@/store/useAuthStore";
@@ -17,10 +17,18 @@ export interface LinkProp {
 export default function Navbar() {
   const [isDropdownShown, setIsDropdownShown] = useState(false);
   const user = useAuthStore((state) => state.user);
+  const setUser = useAuthStore((state) => state.setUser);
   const pathname = usePathname();
 
+  console.log(user);
   function toggleDropdown() {
     setIsDropdownShown(!isDropdownShown);
+  }
+
+  async function handleLogout() {
+    await supabase.auth.signOut();
+
+    setUser(null);
   }
 
   const publicLinks: LinkProp[] = [
@@ -64,6 +72,16 @@ export default function Navbar() {
             </Link>
           );
         })}
+
+        {user && (
+          <button
+            onClick={handleLogout}
+            className="flex items-center text-sm text-[#5F5F5F] hover:text-black transition-colors gap-1"
+          >
+            <LogOut size={16} />
+            Logout
+          </button>
+        )}
       </nav>
 
       {!isDropdownShown ? (
