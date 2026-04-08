@@ -1,5 +1,3 @@
-import { notesData } from "./notesData";
-import { deepDiveData } from "./deepDiveData";
-import { archiveData } from "./archiveData";
+import { mockPosts } from "./mockPosts";
 
-export const data = [...notesData, ...deepDiveData, ...archiveData];
+export const data = mockPosts;

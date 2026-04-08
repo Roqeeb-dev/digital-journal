@@ -2,39 +2,31 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Dialog from "@/components/Dialog";
 import { useForm } from "@/hooks/useForm";
-import { login } from "@/services/authService";
-import { useAuthStore } from "@/store/useAuthStore";
+import { register } from "@/services/authService";
+import { syncUserToStore } from "@/lib/syncUser";
 
-export default function LoginClient() {
-  const { values, update } = useForm({
-    email: "",
-    password: "",
-  });
-
+export default function RegisterClient() {
+  const { values, update } = useForm({ email: "", username: "", password: "" });
   const [focusedField, setFocusedField] = useState<string | null>(null);
-  const [isShown, setIsShown] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const setUser = useAuthStore((state) => state.setUser);
 
   const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
     setError(null);
     setLoading(true);
 
     try {
-      const res = await login(values.email, values.password);
-      setUser(res.user);
+      await register(values.email, values.password, values.username);
+
+      await syncUserToStore();
 
       router.replace("/dashboard");
     } catch (err: any) {
-      setError(err.message || "Invalid credentials");
-      setIsShown(true);
+      setError(err.message || "Registration failed");
     } finally {
       setLoading(false);
     }
@@ -42,6 +34,7 @@ export default function LoginClient() {
 
   const fields = [
     { key: "email" as const, label: "Email", type: "email" },
+    { key: "username" as const, label: "Username", type: "text" },
     { key: "password" as const, label: "Password", type: "password" },
   ];
 
@@ -54,9 +47,9 @@ export default function LoginClient() {
             Digital Journal
           </p>
           <h1 className="text-4xl text-stone-800 leading-tight font-serif">
-            Welcome
+            Join as
             <br />
-            <em className="text-stone-500 font-normal">back.</em>
+            <em className="text-stone-500 font-normal">an author.</em>
           </h1>
         </div>
 
@@ -89,27 +82,21 @@ export default function LoginClient() {
             </div>
           ))}
 
+          {error && <p className="text-sm text-red-500 text-center">{error}</p>}
+
           <button
             type="submit"
             disabled={loading}
             className="w-full mt-8 py-3.5 text-sm tracking-[0.15em] uppercase transition-colors duration-200 bg-stone-950 hover:bg-stone-800 text-[#f5f0e8] font-serif disabled:opacity-60"
           >
-            {loading ? "Entering..." : "Enter"}
+            {loading ? "Creating account..." : "Register"}
           </button>
         </form>
 
         <p className="mt-4 text-sm text-muted-text text-center leading-relaxed">
-          This is a private space — for authors only.{" "}
-          <span className="italic">Not all paths are meant to be shared.</span>
+          A new voice joining the journal.{" "}
+          <span className="italic">Every story deserves to be told.</span>
         </p>
-
-        <Dialog
-          isOpen={isShown}
-          onClose={() => setIsShown(false)}
-          variant="error"
-          title="Login Failed"
-          description={error || "Invalid email or password."}
-        />
       </section>
     </main>
   );

@@ -2,7 +2,6 @@
 
 import { Playfair_Display } from "next/font/google";
 import { useJournalStore } from "@/store/useJournalStore";
-import { buildData } from "@/lib/buildData";
 
 const playfair = Playfair_Display({ subsets: ["latin"], weight: "500" });
 
@@ -12,22 +11,25 @@ export default function Dashboxes() {
   const deepDiveCount = journals.filter(
     (j) => j.category === "deep-dive",
   ).length;
-  const buildCount = buildData.length;
 
   const details = [
     { count: noteCount, text: "Notes" },
-    { count: buildCount, text: "Builds" },
     { count: deepDiveCount, text: "Deepdives" },
   ];
+
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {details.map((d, idx) => (
         <div
           key={idx}
-          className="px-6 py-4 border border-gray-300 rounded-lg bg-surface/20"
+          className="px-7 py-6 border border-gray-200 rounded-xl bg-surface/20"
         >
-          <p className={`${playfair.className} text-2xl mb-1`}>{d.count}</p>
-          <p className="text-sm text-secondary-text">{d.text}</p>
+          <p className={`${playfair.className} text-4xl mb-1.5 tracking-tight`}>
+            {d.count}
+          </p>
+          <p className="text-xs uppercase tracking-widest text-secondary-text">
+            {d.text}
+          </p>
         </div>
       ))}
     </section>

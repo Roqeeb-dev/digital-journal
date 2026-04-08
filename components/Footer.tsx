@@ -9,23 +9,24 @@ export default function Footer() {
     },
     { text: "Email", to: "mailto:shafiriyuroqeeb@gmail.com" },
   ];
+
   return (
-    <footer className="max-w-6xl mx-auto px-3 md:px-1 py-10 flex flex-col md:flex-row items-left md:items-center justify-between gap-6 border-t border-gray-200 my-2">
-      <section>
+    <footer className="max-w-6xl mx-auto px-4 md:px-6 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-t border-gray-200">
+      <section className="space-y-1">
         <Logo />
-        <p className="text-secondary-text">
-          Digital Journal and creative studio
+        <p className="text-sm text-secondary-text tracking-wide">
+          Digital Journal & Creative Studio
         </p>
       </section>
 
-      {/* right */}
-      <nav className="flex items-center gap-8">
+      <nav className="flex items-center gap-6">
         {socialLinks.map(({ text, to }, idx) => (
           <a
             key={idx}
             href={to}
-            className="text-[#5F5F5F] hover:text-black"
-            target="__blank"
+            className="text-sm text-[#5F5F5F] hover:text-black transition-colors duration-200"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {text}
           </a>
